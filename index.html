@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Marcus Stava – personal page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Personal page – contact for Marcus Stava." />
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at top, #1f2937, #020617 48%, #020617 100%);
+            color: #e5e7eb;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .card {
+            position: relative;
+            max-width: 460px;
+            width: 100%;
+            border-radius: 28px;
+            padding: 30px 26px 24px;
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.98));
+            box-shadow:
+                0 22px 45px rgba(0, 0, 0, 0.7),
+                0 0 0 1px rgba(148, 163, 184, 0.35);
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            background:
+                radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.12), transparent 55%),
+                radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.16), transparent 55%);
+            opacity: 0.9;
+            z-index: -1;
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 16px;
+            right: 22px;
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+        .lang-link {
+            color: #e5e7eb;
+            text-decoration: none;
+            margin: 0 4px;
+        }
+        .lang-link:hover { text-decoration: underline; }
+        .lang-sep { color: #6b7280; }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+        .avatar-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .avatar-ring {
+            position: absolute;
+            inset: -6px;
+            border-radius: 999px;
+            background: conic-gradient(from 200deg, #22d3ee, #818cf8, #22d3ee);
+            opacity: 0.9;
+            filter: blur(6px);
+        }
+
+        .avatar {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            border-radius: 999px;
+            overflow: hidden;
+            border: 2px solid rgba(148, 163, 184, 0.6);
+            background: #020617;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .name-block h1 {
+            font-size: 1.7rem;
+            margin-bottom: 4px;
+        }
+
+        .tagline {
+            font-size: 0.84rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 6px;
+        }
+
+        .name-block p {
+            font-size: 0.95rem;
+            color: #d1d5db;
+        }
+
+        .divider {
+            margin: 18px 0 16px;
+            height: 1px;
+            border-radius: 999px;
+            background: linear-gradient(to right, transparent, rgba(148, 163, 184, 0.7), transparent);
+        }
+
+        .bio {
+            font-size: 0.96rem;
+            line-height: 1.6;
+            color: #e5e7eb;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 0.78rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 10px;
+        }
+
+        .contact-box {
+            border-radius: 20px;
+            border: 1px solid rgba(148, 163, 184, 0.55);
+            background:
+                radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), rgba(15, 23, 42, 0.98));
+            padding: 14px 16px 12px;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .contact-main {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #9ca3af;
+        }
+
+        .value {
+            font-size: 0.98rem;
+        }
+
+        .value a {
+            color: #e5e7eb;
+            text-decoration: none;
+        }
+
+        .value a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-icon {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .btn-row {
+            margin-top: 8px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 9px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #22d3ee, #818cf8);
+            color: #020617;
+            box-shadow: 0 8px 18px rgba(56, 189, 248, 0.35);
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.06);
+            transform: translateY(-1px);
+        }
+
+        .footer-text {
+            margin-top: 10px;
+            font-size: 0.78rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 24px 20px 20px; }
+            .header { align-items: flex-start; }
+            .name-block h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+
+        <div class="lang-switch">
+            <a href="index_cs.html" class="lang-link">CZ</a>
+            <span class="lang-sep">|</span>
+            <a href="index.html" class="lang-link">EN</a>
+        </div>
+
+        <header class="header">
+            <div class="avatar-wrap">
+                <div class="avatar-ring"></div>
+                <div class="avatar">
+                    <img src="foto.jpg" alt="Marcus Stava" />
+                </div>
+            </div>
+            <div class="name-block">
+                <div class="tagline">Capital markets · Trading · Technology</div>
+                <h1>Marcus Stava</h1>
+                <p>Personal card – quick contact and short introduction.</p>
+            </div>
+        </header>
+
+        <div class="divider"></div>
+
+        <section class="bio">
+            <p>
+                I focus on capital markets, swing trading and technology.
+                I build my own trading systems and I am long-term interested in connecting finance with artificial intelligence.
+            </p>
+        </section>
+
+        <section>
+            <div class="section-title">Contact</div>
+            <div class="contact-box">
+
+                <div class="contact-row">
+                    <div class="contact-main">
+                        <div class="label">E-mail</div>
+                        <div class="value">
+                            <a href="mailto:stavamiroslav@gmail.com">stavamiroslav@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-icon">✉</div>
+                </div>
+
+                <div class="contact-row">
+                    <div class="contact-main">
+                        <div class="label">Phone</div>
+                        <div class="value">
+                            <a href="tel:+17735740238">+1 773&nbsp;574&nbsp;0238</a>
+                        </div>
+                    </div>
+                    <div class="contact-icon">☎</div>
+                </div>
+
+                <div class="btn-row">
+                    <a class="btn-primary" href="mailto:stavamiroslav@gmail.com">
+                        Send e-mail
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="footer-text">
+            Simple personal card – you can always add more later.
+        </div>
+    </main>
+</body>
+</html>
